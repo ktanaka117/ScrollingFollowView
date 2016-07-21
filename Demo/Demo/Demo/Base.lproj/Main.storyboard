@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CuM-8K-Ulv" customClass="ScrollingFollowView" customModule="Demo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="CqE-EM-ow5"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="20o-9R-a7L">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="j51-cR-dju"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="op5-xp-vzZ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CuM-8K-Ulv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="58l-gp-to7"/>
+                            <constraint firstItem="20o-9R-a7L" firstAttribute="top" secondItem="CuM-8K-Ulv" secondAttribute="bottom" id="GPf-VK-hWP"/>
+                            <constraint firstAttribute="trailing" secondItem="CuM-8K-Ulv" secondAttribute="trailing" id="STf-WS-wsX"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="20o-9R-a7L" secondAttribute="bottom" id="YTH-yq-lHZ"/>
+                            <constraint firstItem="20o-9R-a7L" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="auD-25-GFV"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="20o-9R-a7L" secondAttribute="bottom" id="htW-LN-FhG"/>
+                            <constraint firstAttribute="trailing" secondItem="20o-9R-a7L" secondAttribute="trailing" id="jSr-yM-von"/>
+                            <constraint firstItem="CuM-8K-Ulv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="p0B-Nh-5KX"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="YTH-yq-lHZ"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="navBarScrollingFollowView" destination="CuM-8K-Ulv" id="4SI-8D-a9c"/>
+                        <outlet property="navBarTopConstraint" destination="58l-gp-to7" id="ghg-AF-8uY"/>
+                        <outlet property="tableView" destination="20o-9R-a7L" id="Q7s-Ye-NgR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="334" y="372"/>
+        </scene>
+    </scenes>
+</document>
