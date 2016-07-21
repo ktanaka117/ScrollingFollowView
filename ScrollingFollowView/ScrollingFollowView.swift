@@ -8,16 +8,16 @@
 
 import UIKit
 
-class ScrollingFollowView: UIView {
+public class ScrollingFollowView: UIView {
     
     private var previousPoint: CGFloat = 0
     
-    weak var constraint: NSLayoutConstraint!
+    public weak var constraint: NSLayoutConstraint!
     
     private var minPoint: CGFloat!
     private var maxPoint: CGFloat = 0
     
-    func setup(constraint cons: NSLayoutConstraint, isIncludingStatusBarHeight: Bool) {
+    public func setup(constraint cons: NSLayoutConstraint, isIncludingStatusBarHeight: Bool) {
         constraint = cons
         
         if isIncludingStatusBarHeight {
@@ -27,7 +27,7 @@ class ScrollingFollowView: UIView {
         }
     }
     
-    func didScrolled(scrollView: UIScrollView) {
+    public func didScrolled(scrollView: UIScrollView) {
         let currentPoint = -scrollView.contentOffset.y
         
         let differencePoint = currentPoint - previousPoint
