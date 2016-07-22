@@ -386,6 +386,7 @@
 				291F7B641D40E6230024374A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
