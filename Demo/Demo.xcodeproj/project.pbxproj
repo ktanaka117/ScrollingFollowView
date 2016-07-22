@@ -12,6 +12,7 @@
 		29F9EA391D42095400A9E9BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29F9EA371D42095400A9E9BC /* Main.storyboard */; };
 		29F9EA3B1D42095400A9E9BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29F9EA3A1D42095400A9E9BC /* Assets.xcassets */; };
 		29F9EA3E1D42095400A9E9BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29F9EA3C1D42095400A9E9BC /* LaunchScreen.storyboard */; };
+		29F9EA6F1D42161500A9E9BC /* ScrollingFollowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F9EA6E1D42161400A9E9BC /* ScrollingFollowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		29F9EA3A1D42095400A9E9BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29F9EA3D1D42095400A9E9BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		29F9EA3F1D42095400A9E9BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		29F9EA6E1D42161400A9E9BC /* ScrollingFollowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScrollingFollowView.swift; path = ../../ScrollingFollowView/ScrollingFollowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				29F9EA331D42095400A9E9BC /* AppDelegate.swift */,
 				29F9EA351D42095400A9E9BC /* ViewController.swift */,
+				29F9EA6E1D42161400A9E9BC /* ScrollingFollowView.swift */,
 				29F9EA371D42095400A9E9BC /* Main.storyboard */,
 				29F9EA3A1D42095400A9E9BC /* Assets.xcassets */,
 				29F9EA3C1D42095400A9E9BC /* LaunchScreen.storyboard */,
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29F9EA6F1D42161500A9E9BC /* ScrollingFollowView.swift in Sources */,
 				29F9EA361D42095400A9E9BC /* ViewController.swift in Sources */,
 				29F9EA341D42095400A9E9BC /* AppDelegate.swift in Sources */,
 			);
@@ -286,6 +290,7 @@
 				29F9EA441D42095400A9E9BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
