@@ -7,7 +7,7 @@
 
 ScrollingFollowView is a simple view which follows UIScrollView scrolling.
 
-#### Using ScrollingFollowView
+#### ScrollingFollowView Sample Images
 - SearchBarSample    : SearchBar Area
 - ProfileViewSample  : Like Profile View Area
 - BottomButtonSample : SearchBar and Bottom Button Area
