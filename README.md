@@ -18,7 +18,7 @@ ScrollingFollowView is a simple view which follows UIScrollView scrolling.
 
 ## Installation
 ### CocoaPods
-ScrollingFollowView is available through [CocoaPods](). To install it simply add the following line to your Podfile:
+ScrollingFollowView is available through [CocoaPods](http://cocoapods.org). To install it simply add the following line to your Podfile:
 
 ```
 pod "ScrollingFollowView"
@@ -74,7 +74,7 @@ Coming soon...
 - Enable to use like UITabBarController.
 - Enable to implement only using code.
 - Enable to move ScrollingFollowView using frame layout.
-- Implement show() and hide() method.
+- Implement `show()` and `hide()` method.
 - Enable to manage previousePoint.
 - Enable to horizontally move ScrollingFollowView.
 
