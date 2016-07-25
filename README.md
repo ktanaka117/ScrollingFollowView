@@ -1,19 +1,56 @@
 # ScrollingFollowView
+
+[![Platform](http://img.shields.io/badge/platform-ios-blue.svg?style=flat
+)](https://developer.apple.com/iphone/index.action)
+[![Language](http://img.shields.io/badge/language-swift-brightgreen.svg?style=flat
+)](https://developer.apple.com/swift)
+
 ScrollingFollowView is a simple view which follows UIScrollView scrolling.
 
-## How to Use
+#### Using ScrollingFollowView
+- SearchBarSample    : SearchBar Area
+- ProfileViewSample  : Like Profile View Area
+- BottomButtonSample : SearchBar and Bottom Button Area
 
+![](./SampleImage/SearchBarSample.gif)
+![](./SampleImage/ProfileViewSample.gif)
+![](./SampleImage/BottomButtonSample.gif)
+
+## Installation
+### CocoaPods
+ScrollingFollowView is available through [CocoaPods](). To install it simply add the following line to your Podfile:
+
+```
+pod "ScrollingFollowView"
+```
+
+Then you can import it with:
+
+```
+import ScrollingFollowView
+```
+
+## How to Use
+### Layout InterfaceBuilder
+ScrollingFollowView only supports Autolayout use. 
+(I don't force this feature on library users. I'm going to modify this feature. Plz look Future Improvements.)
+You must make layouts with InterfaceBuilder like under sample image.
+
+![](./SampleImage/HowToUse.png)
+![](./SampleImage/module.jpg)
+
+### Code
 ```swift
 @IBOutlet weak var scrollingFollowView: ScrollingFollowView!
 
-// NSLayoutConstraint of moving position.
-@IBOutlet weak var scrollingFollowViewTopConstraint: NSLayoutConstraint!
+// NSLayoutConstraint of moving edge.
+@IBOutlet weak var constraint: NSLayoutConstraint!
 
 override func viewDidLoad() {
     super.viewDidLoad()
 
     // First setup
-    scrollingFollowView.setup(constraint: scrollingFollowViewTopConstraint, isIncludingStatusBarHeight: true)
+    scrollingFollowView.setup(constraint: constraint, isIncludingStatusBarHeight: true)
 }
 ```
 
@@ -24,15 +61,26 @@ func scrollViewDidScroll(scrollView: UIScrollView) {
 }
 ```
 
+## Advanced Use
+Coming soon...
+
 ## Runtime Requirements
 
 - iOS8.0 or later
 - Xcode 7.0
 
+## Future Improvements
+- Refactoring.💪
+- Enable to use like UITabBarController.
+- Enable to implement only using code.
+- Enable to move ScrollingFollowView using frame layout.
+- Implement show() and hide() method.
+- Enable to manage previousePoint.
+- Enable to horizontally move ScrollingFollowView.
+
 ## Contact
-Please give me contact about this library, mension on Twitter.
+When you have some opinions or ideas about this library, send me a reply on Twitter.🍣
 [@ktanaka117](https://twitter.com/ktanaka117)
 
 ## License
-
 ScrollingFollowView is released under the MIT license. Go read the LICENSE file for more information.
