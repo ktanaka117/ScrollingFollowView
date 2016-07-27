@@ -44,6 +44,22 @@ extension ViewController: UITableViewDataSource {
     }
 }
 
+extension ViewController: UITableViewDelegate {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if tableView.contentOffset.y > 200 {
+            navBarScrollingFollowView.show(true) {
+                print("show")
+            }
+        } else {
+            navBarScrollingFollowView.hide(true) {
+                print("hide")
+            }
+        }
+        
+        navBarScrollingFollowView.resetPreviousPoint(tableView)
+    }
+}
+
 extension ViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(scrollView: UIScrollView) {
         navBarScrollingFollowView.didScrolled(scrollView)
