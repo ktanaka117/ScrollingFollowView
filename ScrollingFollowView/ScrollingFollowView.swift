@@ -57,3 +57,45 @@ public class ScrollingFollowView: UIView {
     }
     
 }
+
+// MARK: - ManageProperties
+extension ScrollingFollowView {
+    public func resetPreviousPoint(scrollView: UIScrollView) {
+        previousPoint = -scrollView.contentOffset.y
+    }
+}
+
+// MARK: - ShowAndHide
+extension ScrollingFollowView {
+    public func show(animated: Bool, duration: Double = 0.2) {
+        superview?.layoutIfNeeded()
+        
+        if animated {
+            constraint.constant = maxPoint
+            
+            UIView.animateWithDuration(duration) { [weak self] in
+                guard let `self` = self else { return }
+                self.superview?.layoutIfNeeded()
+            }
+        } else {
+            constraint.constant = maxPoint
+            superview?.layoutIfNeeded()
+        }
+    }
+    
+    public func hide(animated: Bool, duration: Double = 0.2) {
+        superview?.layoutIfNeeded()
+        
+        if animated {
+            constraint.constant = minPoint
+            
+            UIView.animateWithDuration(duration) { [weak self] in
+                guard let `self` = self else { return }
+                self.superview?.layoutIfNeeded()
+            }
+        } else {
+            constraint.constant = minPoint
+            superview?.layoutIfNeeded()
+        }
+    }
+}
