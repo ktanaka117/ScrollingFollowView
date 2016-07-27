@@ -43,6 +43,8 @@ public class ScrollingFollowView: UIView {
             constraint.constant += differencePoint
         }
         
+        layoutIfNeeded()
+        
         previousPoint = currentPoint
     }
     
