@@ -78,7 +78,7 @@ You can use `show(animated:)` and `hide(animated:)` methods to ScrollingFollowVi
 }
 ```
 
-`resetPreviousPoint(scrollView:)` must call after show(animated:) and hide(animated), previousPoint is ScrollingFollowView's private property which used changing constraint.constant value.
+`resetPreviousPoint(scrollView:)` must call after `show(animated:)` and `hide(animated)`, `previousPoint` is ScrollingFollowView's private property which used changing constraint.constant value.
 
 And show and hide methods are declared as:
 ```swift
