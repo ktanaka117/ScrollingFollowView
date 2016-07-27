@@ -86,7 +86,20 @@ func show(animated: Bool, duration: Double = 0.2, completionHandler: (()->())? =
 func hide(animated: Bool, duration: Double = 0.2, completionHandler: (()->())? = nil)
 ```
 
-so you can set `animation duration` and completionHandler which used after animation.
+so you can set `animation duration` and `completionHandler` which used after animation:
+
+```swift
+// show
+@IBAction func showButton() {
+	scrollingFollowView.show(true, duration: 0.6) { print("showed") }
+	scrollingFollowView.resetPreviousPoint(scrollView)
+}
+// hide
+@IBAction func hideButton() {
+	scrollingFollowView.hide(true, duration: 0.5) { print("hid") }
+	scrollingFollowView.resetPreviousPoint(scrollView)
+}
+```
 
 ## Runtime Requirements
 
