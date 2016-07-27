@@ -62,7 +62,31 @@ func scrollViewDidScroll(scrollView: UIScrollView) {
 ```
 
 ## Advanced Use
-Coming soon...
+### Use show(animated:) and hide(animated:)
+You can use `show(animated:)` and `hide(animated:)` methods to ScrollingFollowView object like these:
+
+```swift
+// show
+@IBAction func showButton() {
+	scrollingFollowView.show(true)
+	scrollingFollowView.resetPreviousPoint(scrollView)
+}
+// hide
+@IBAction func hideButton() {
+	scrollingFollowView.hide(false)
+	scrollingFollowView.resetPreviousPoint(scrollView)
+}
+```
+
+`resetPreviousPoint(scrollView:)` must call after show(animated:) and hide(animated), previousPoint is ScrollingFollowView's private property which used changing constraint.constant value.
+
+And show and hide methods are declared as:
+```swift
+func show(animated: Bool, duration: Double = 0.2, completionHandler: (()->())? = nil)
+func hide(animated: Bool, duration: Double = 0.2, completionHandler: (()->())? = nil)
+```
+
+so you can set `animation duration` and completionHandler which used after animation.
 
 ## Runtime Requirements
 
