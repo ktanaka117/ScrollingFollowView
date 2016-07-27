@@ -67,35 +67,47 @@ extension ScrollingFollowView {
 
 // MARK: - ShowAndHide
 extension ScrollingFollowView {
-    public func show(animated: Bool, duration: Double = 0.2) {
+    public func show(animated: Bool, duration: Double = 0.2, completionHandler: (()->())? = nil) {
         superview?.layoutIfNeeded()
         
         if animated {
             constraint.constant = maxPoint
             
+            CATransaction.begin()
+            CATransaction.setCompletionBlock(completionHandler)
+            
             UIView.animateWithDuration(duration) { [weak self] in
                 guard let `self` = self else { return }
                 self.superview?.layoutIfNeeded()
             }
+            
+            CATransaction.commit()
         } else {
             constraint.constant = maxPoint
             superview?.layoutIfNeeded()
+            completionHandler?()
         }
     }
     
-    public func hide(animated: Bool, duration: Double = 0.2) {
+    public func hide(animated: Bool, duration: Double = 0.2, completionHandler: (()->())? = nil) {
         superview?.layoutIfNeeded()
         
         if animated {
             constraint.constant = minPoint
             
+            CATransaction.begin()
+            CATransaction.setCompletionBlock(completionHandler)
+            
             UIView.animateWithDuration(duration) { [weak self] in
                 guard let `self` = self else { return }
                 self.superview?.layoutIfNeeded()
             }
+            
+            CATransaction.commit()
         } else {
             constraint.constant = minPoint
             superview?.layoutIfNeeded()
+            completionHandler?()
         }
     }
 }
