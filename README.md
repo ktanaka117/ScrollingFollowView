@@ -111,8 +111,6 @@ so you can set `animation duration` and `completionHandler` which used after ani
 - Enable to use like UITabBarController.
 - Enable to implement only using code.
 - Enable to move ScrollingFollowView using frame layout.
-- Implement `show()` and `hide()` method.
-- Enable to manage previousePoint.
 - Enable to horizontally move ScrollingFollowView.
 
 ## Contact
