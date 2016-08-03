@@ -20,7 +20,10 @@ class ViewController: UIViewController {
         
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
-        navBarScrollingFollowView.setup(constraint: navBarTopConstraint, isIncludingStatusBarHeight: true)
+        let sfViewHeight = navBarScrollingFollowView.frame.size.height
+        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
+        
+        navBarScrollingFollowView.setup(constraint: navBarTopConstraint, maxFollowPoint: sfViewHeight + statusBarHeight, minFollowPoint: 0)
         
         navBarScrollingFollowView.backgroundColor = UIColor.redColor()
     }

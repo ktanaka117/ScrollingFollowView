@@ -14,17 +14,16 @@ public class ScrollingFollowView: UIView {
     
     public weak var constraint: NSLayoutConstraint!
     
-    private var minPoint: CGFloat!
-    private var maxPoint: CGFloat = 0
+    // In default use, maxFollowPoint should be maxPoint of following to scroll DOWN.
+    private var maxFollowPoint: CGFloat!
+    // In default use, minFollowPoint should be maxPoint of following to scroll UP.
+    private var minFollowPoint: CGFloat!
     
-    public func setup(constraint cons: NSLayoutConstraint, isIncludingStatusBarHeight: Bool) {
+    public func setup(constraint cons: NSLayoutConstraint, maxFollowPoint: CGFloat, minFollowPoint: CGFloat) {
         constraint = cons
         
-        if isIncludingStatusBarHeight {
-            minPoint = -frame.size.height - UIApplication.sharedApplication().statusBarFrame.height
-        } else {
-            minPoint = -frame.size.height
-        }
+        self.maxFollowPoint = -maxFollowPoint
+        self.minFollowPoint = minFollowPoint
     }
     
     public func didScrolled(scrollView: UIScrollView) {
@@ -35,10 +34,10 @@ public class ScrollingFollowView: UIView {
 
         if isTopOrBottomEdge(currentPoint, scrollView: scrollView) { return }
         
-        if nextPoint < minPoint {
-            constraint.constant = minPoint
-        } else if nextPoint > maxPoint {
-            constraint.constant = maxPoint
+        if nextPoint < maxFollowPoint {
+            constraint.constant = maxFollowPoint
+        } else if nextPoint > minFollowPoint {
+            constraint.constant = minFollowPoint
         } else {
             constraint.constant += differencePoint
         }
@@ -71,7 +70,7 @@ extension ScrollingFollowView {
         superview?.layoutIfNeeded()
         
         if animated {
-            constraint.constant = maxPoint
+            constraint.constant = minFollowPoint
             
             CATransaction.begin()
             CATransaction.setCompletionBlock(completionHandler)
@@ -83,7 +82,7 @@ extension ScrollingFollowView {
             
             CATransaction.commit()
         } else {
-            constraint.constant = maxPoint
+            constraint.constant = minFollowPoint
             superview?.layoutIfNeeded()
             completionHandler?()
         }
@@ -93,7 +92,7 @@ extension ScrollingFollowView {
         superview?.layoutIfNeeded()
         
         if animated {
-            constraint.constant = minPoint
+            constraint.constant = maxFollowPoint
             
             CATransaction.begin()
             CATransaction.setCompletionBlock(completionHandler)
@@ -105,7 +104,7 @@ extension ScrollingFollowView {
             
             CATransaction.commit()
         } else {
-            constraint.constant = minPoint
+            constraint.constant = maxFollowPoint
             superview?.layoutIfNeeded()
             completionHandler?()
         }
