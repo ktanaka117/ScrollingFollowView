@@ -12,7 +12,7 @@ public class ScrollingFollowView: UIView {
     
     private var previousPoint: CGFloat = 0
     
-    public weak var constraint: NSLayoutConstraint!
+    public private(set) weak var constraint: NSLayoutConstraint!
     
     // In default use, maxFollowPoint should be maxPoint of following to scroll DOWN.
     private var maxFollowPoint: CGFloat!
