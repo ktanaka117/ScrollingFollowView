@@ -32,7 +32,7 @@ public class ScrollingFollowView: UIView {
         let differencePoint = currentPoint - previousPoint
         let nextPoint = constraint.constant + differencePoint
 
-        if isTopOrBottomEdge(currentPoint, scrollView: scrollView) { return }
+        if isTopOrBottomEdge(scrollView) { return }
         
         if nextPoint < maxFollowPoint {
             constraint.constant = maxFollowPoint
@@ -47,8 +47,8 @@ public class ScrollingFollowView: UIView {
         previousPoint = currentPoint
     }
     
-    private func isTopOrBottomEdge(currentPoint: CGFloat, scrollView: UIScrollView) -> Bool {
-        if -currentPoint >= scrollView.contentSize.height - scrollView.bounds.size.height || -currentPoint <= 0 {
+    private func isTopOrBottomEdge(scrollView: UIScrollView) -> Bool {
+        if scrollView.contentOffset.y >= scrollView.contentSize.height - scrollView.bounds.size.height || scrollView.contentOffset.y <= 0 {
             return true
         }
         
