@@ -3,7 +3,7 @@
 - delete unnecessary param in isTopOrBottomEdge. #1 @tototti
 - fix UIView animation. #2 @tototti
 
-## Contributer
+## Contributor
 @tototti
 
 Thank you very much!
