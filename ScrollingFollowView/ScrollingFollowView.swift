@@ -102,14 +102,13 @@ extension ScrollingFollowView {
         superview?.layoutIfNeeded()
         
         if animated {
-            UIView.animateWithDuration(duration,
-                                       animations: { [weak self] in
-                                        guard let `self` = self else { return }
-                                        self.constraint.constant = self.minFollowPoint
-                                        self.superview?.layoutIfNeeded() },
-                                       completion: { _ in
-                                        completionHandler?()
-            })
+            UIView.animateWithDuration(duration, animations: { [weak self] in
+                guard let `self` = self else { return }
+                self.constraint.constant = self.minFollowPoint
+                self.superview?.layoutIfNeeded()
+            }) { _ in
+                completionHandler?()
+            }
         } else {
             constraint.constant = minFollowPoint
             superview?.layoutIfNeeded()
@@ -121,14 +120,13 @@ extension ScrollingFollowView {
         superview?.layoutIfNeeded()
         
         if animated {
-            UIView.animateWithDuration(duration,
-                                       animations: { [weak self] in
-                                        guard let `self` = self else { return }
-                                        self.constraint.constant = self.maxFollowPoint
-                                        self.superview?.layoutIfNeeded() },
-                                       completion: { _ in
-                                        completionHandler?()
-            })
+            UIView.animateWithDuration(duration, animations: { [weak self] in
+                guard let `self` = self else { return }
+                self.constraint.constant = self.maxFollowPoint
+                self.superview?.layoutIfNeeded()
+            }) { _ in
+                completionHandler?()
+            }
         } else {
             constraint.constant = maxFollowPoint
             superview?.layoutIfNeeded()
