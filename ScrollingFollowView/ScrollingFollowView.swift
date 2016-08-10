@@ -19,6 +19,12 @@ public class ScrollingFollowView: UIView {
     // In default use, minFollowPoint should be maxPoint of following to scroll UP.
     private var minFollowPoint: CGFloat!
     
+    // These properties are enable to delay showing and hiding ScrollingFollowView.
+    private var pointOfStartingShowing: CGFloat = 0
+    private var pointOfStartingHiding: CGFloat = 0
+    
+    private var delayBuffer: CGFloat = 0
+    
     public func setup(constraint cons: NSLayoutConstraint, maxFollowPoint: CGFloat, minFollowPoint: CGFloat) {
         constraint = cons
         
@@ -26,20 +32,42 @@ public class ScrollingFollowView: UIView {
         self.minFollowPoint = minFollowPoint
     }
     
+    public func setupDelayPoints(pointOfStartingShowing showingPoint: CGFloat, pointOfStartingHiding hidingPoint: CGFloat) {
+        pointOfStartingShowing = -showingPoint
+        pointOfStartingHiding = hidingPoint
+    }
+    
     public func didScrolled(scrollView: UIScrollView) {
         let currentPoint = -scrollView.contentOffset.y
         
         let differencePoint = currentPoint - previousPoint
         let nextPoint = constraint.constant + differencePoint
-
+        let nextDelayBuffer = delayBuffer + differencePoint
+        
         if isTopOrBottomEdge(currentPoint, scrollView: scrollView) { return }
         
-        if nextPoint < maxFollowPoint {
-            constraint.constant = maxFollowPoint
-        } else if nextPoint > minFollowPoint {
-            constraint.constant = minFollowPoint
-        } else {
-            constraint.constant += differencePoint
+        // Checking delay.
+        // pointOfStartingShowing < nextDelayBuffer < pointOfStartingHiding
+        if pointOfStartingShowing < nextDelayBuffer && pointOfStartingHiding > nextDelayBuffer {
+            
+            if nextDelayBuffer < pointOfStartingShowing {
+                delayBuffer = pointOfStartingShowing
+            } else if nextDelayBuffer > pointOfStartingHiding {
+                delayBuffer = pointOfStartingHiding
+            } else {
+                delayBuffer += differencePoint
+            }
+            
+        } else { // Follow scrolling.
+            
+            if nextPoint < maxFollowPoint {
+                constraint.constant = maxFollowPoint
+            } else if nextPoint > minFollowPoint {
+                constraint.constant = minFollowPoint
+            } else {
+                constraint.constant += differencePoint
+            }
+            
         }
         
         layoutIfNeeded()

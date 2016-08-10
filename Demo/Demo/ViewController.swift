@@ -24,6 +24,7 @@ class ViewController: UIViewController {
         let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
         
         navBarScrollingFollowView.setup(constraint: navBarTopConstraint, maxFollowPoint: sfViewHeight + statusBarHeight, minFollowPoint: 0)
+        navBarScrollingFollowView.setupDelayPoints(pointOfStartingShowing: 100, pointOfStartingHiding: 0)
         
         navBarScrollingFollowView.backgroundColor = UIColor.redColor()
     }
