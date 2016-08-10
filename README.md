@@ -106,6 +106,27 @@ so you can set `animation duration` and `completionHandler` which used after ani
 }
 ```
 
+### Use DelayPoints
+You can use hide and show delay points like under gif:
+
+![](./SampleImage/DelaySample.gif)
+
+Add `setupDelayPoints(pointOfStartingHiding:pointOfStartingShowing:)`.
+For example, write in `viewDidLoad()`:
+
+```swift
+override func viewDidLoad() {
+    super.viewDidLoad()
+
+    let scrollingFollowViewHeight = scrollingFollowView.frame.size.height
+    let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
+
+    scrollingFollowView.setup(constraint: constraint, maxFollowPoint: scrollingFollowViewHeight + statusBarHeight, minFollowPoint: 0)
+
+    scrollingFollowView.setupDelayPoints(pointOfStartingHiding: 100, pointOfStartingShowing: 50)
+}
+```
+
 ## Runtime Requirements
 
 - iOS8.0 or later
