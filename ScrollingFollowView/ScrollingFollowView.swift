@@ -102,17 +102,13 @@ extension ScrollingFollowView {
         superview?.layoutIfNeeded()
         
         if animated {
-            constraint.constant = minFollowPoint
-            
-            CATransaction.begin()
-            CATransaction.setCompletionBlock(completionHandler)
-            
-            UIView.animateWithDuration(duration) { [weak self] in
+            UIView.animateWithDuration(duration, animations: { [weak self] in
                 guard let `self` = self else { return }
+                self.constraint.constant = self.minFollowPoint
                 self.superview?.layoutIfNeeded()
+            }) { _ in
+                completionHandler?()
             }
-            
-            CATransaction.commit()
         } else {
             constraint.constant = minFollowPoint
             superview?.layoutIfNeeded()
@@ -124,17 +120,13 @@ extension ScrollingFollowView {
         superview?.layoutIfNeeded()
         
         if animated {
-            constraint.constant = maxFollowPoint
-            
-            CATransaction.begin()
-            CATransaction.setCompletionBlock(completionHandler)
-            
-            UIView.animateWithDuration(duration) { [weak self] in
+            UIView.animateWithDuration(duration, animations: { [weak self] in
                 guard let `self` = self else { return }
+                self.constraint.constant = self.maxFollowPoint
                 self.superview?.layoutIfNeeded()
+            }) { _ in
+                completionHandler?()
             }
-            
-            CATransaction.commit()
         } else {
             constraint.constant = maxFollowPoint
             superview?.layoutIfNeeded()
