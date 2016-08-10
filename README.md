@@ -138,9 +138,7 @@ override func viewDidLoad() {
 - Enable to implement only using code.
 - Enable to move ScrollingFollowView using frame layout.
 - Enable to horizontally move ScrollingFollowView.
-- Enable to manage minPoint and maxPoint.
 - Enable to manage constraint without passing constraint argument. (I think we only want to chose an edge which follows scrolling. Like .Top, .Bottom, .Left, .Right.)
-- Enable to setup starting following delay point.
 - Enable to prohibitting half-visible view using animation.
 
 ## Contact
