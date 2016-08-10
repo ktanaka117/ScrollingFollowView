@@ -90,6 +90,10 @@ extension ScrollingFollowView {
     public func resetPreviousPoint(scrollView: UIScrollView) {
         previousPoint = -scrollView.contentOffset.y
     }
+    
+    public func resetDelayBuffer(scrollView: UIScrollView) {
+        delayBuffer = -scrollView.contentOffset.y
+    }
 }
 
 // MARK: - ShowAndHide
