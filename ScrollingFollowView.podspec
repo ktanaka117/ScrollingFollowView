@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ScrollingFollowView"
-  s.version      = "0.3.0"
+  s.version      = "0.3.1"
   s.summary      = "A simple view follows scrolling."
   s.description  = <<-DESC
                    A simple view follows scrolling.
