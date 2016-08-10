@@ -20,8 +20,8 @@ public class ScrollingFollowView: UIView {
     private var minFollowPoint: CGFloat!
     
     // These properties are enable to delay showing and hiding ScrollingFollowView.
-    private var pointOfStartingShowing: CGFloat = 0
     private var pointOfStartingHiding: CGFloat = 0
+    private var pointOfStartingShowing: CGFloat = 0
     
     private var delayBuffer: CGFloat = 0
     
@@ -32,9 +32,9 @@ public class ScrollingFollowView: UIView {
         self.minFollowPoint = minFollowPoint
     }
     
-    public func setupDelayPoints(pointOfStartingShowing showingPoint: CGFloat, pointOfStartingHiding hidingPoint: CGFloat) {
-        pointOfStartingShowing = -showingPoint
-        pointOfStartingHiding = hidingPoint
+    public func setupDelayPoints(pointOfStartingHiding hidingPoint: CGFloat, pointOfStartingShowing showingPoint: CGFloat) {
+        pointOfStartingHiding = -hidingPoint
+        pointOfStartingShowing = showingPoint
     }
     
     public func didScrolled(scrollView: UIScrollView) {
@@ -47,13 +47,13 @@ public class ScrollingFollowView: UIView {
         if isTopOrBottomEdge(currentPoint, scrollView: scrollView) { return }
         
         // Checking delay.
-        // pointOfStartingShowing < nextDelayBuffer < pointOfStartingHiding
-        if pointOfStartingShowing < nextDelayBuffer && pointOfStartingHiding > nextDelayBuffer {
+        // pointOfStartingHiding < nextDelayBuffer < pointOfStartingShowing
+        if pointOfStartingHiding < nextDelayBuffer && pointOfStartingShowing > nextDelayBuffer {
             
-            if nextDelayBuffer < pointOfStartingShowing {
-                delayBuffer = pointOfStartingShowing
-            } else if nextDelayBuffer > pointOfStartingHiding {
+            if nextDelayBuffer < pointOfStartingHiding {
                 delayBuffer = pointOfStartingHiding
+            } else if nextDelayBuffer > pointOfStartingShowing {
+                delayBuffer = pointOfStartingShowing
             } else {
                 delayBuffer += differencePoint
             }
