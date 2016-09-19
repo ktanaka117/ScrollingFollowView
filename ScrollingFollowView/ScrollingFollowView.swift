@@ -25,11 +25,15 @@ open class ScrollingFollowView: UIView {
     
     fileprivate var delayBuffer: CGFloat = 0
     
-    open func setup(constraint cons: NSLayoutConstraint, maxFollowPoint: CGFloat, minFollowPoint: CGFloat) {
+    open private(set) var enableBeFollowingState = true
+    
+    open func setup(constraint cons: NSLayoutConstraint, maxFollowPoint: CGFloat, minFollowPoint: CGFloat, enableBeFollowingState: Bool = true) {
         constraint = cons
         
         self.maxFollowPoint = -maxFollowPoint
         self.minFollowPoint = minFollowPoint
+        
+        self.enableBeFollowingState = enableBeFollowingState
     }
     
     open func setupDelayPoints(pointOfStartingHiding hidingPoint: CGFloat, pointOfStartingShowing showingPoint: CGFloat) {
@@ -73,6 +77,20 @@ open class ScrollingFollowView: UIView {
         layoutIfNeeded()
         
         previousPoint = currentPoint
+    }
+    
+    open func didEndScrolling(_ willDecelerate: Bool = false) {
+        if !willDecelerate && enableBeFollowingState {
+            showOrHideIfNeeded()
+        }
+    }
+    
+    private func showOrHideIfNeeded() {
+        if constraint.constant < maxFollowPoint - maxFollowPoint/2 {
+            hide(true)
+        } else {
+            show(true)
+        }
     }
     
     private func isTopOrBottomEdge(_ scrollView: UIScrollView) -> Bool {

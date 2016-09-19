@@ -20,10 +20,10 @@ class ViewController: UIViewController {
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
-        let sfViewHeight = navBarScrollingFollowView.frame.size.height
+        let navBarHeight: CGFloat = 44.0
         let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
         
-        navBarScrollingFollowView.setup(constraint: navBarTopConstraint, maxFollowPoint: sfViewHeight + statusBarHeight, minFollowPoint: 0)
+        navBarScrollingFollowView.setup(constraint: navBarTopConstraint, maxFollowPoint: navBarHeight + statusBarHeight, minFollowPoint: 0)
         navBarScrollingFollowView.setupDelayPoints(pointOfStartingHiding: 100, pointOfStartingShowing: 0)
         
         navBarScrollingFollowView.backgroundColor = UIColor.red
@@ -67,5 +67,13 @@ extension ViewController: UITableViewDelegate {
 extension ViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         navBarScrollingFollowView.didScroll(scrollView)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        navBarScrollingFollowView.didEndScrolling()
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        navBarScrollingFollowView.didEndScrolling(decelerate)
     }
 }
