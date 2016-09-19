@@ -132,9 +132,11 @@ override func viewDidLoad() {
 You can control half-display state like under gif:
 
 allowHalfDisplay
+
 ![](./SampleImage/allowHalfDisplay.gif)
 
 disallowHalfDisplay(Auto Animation)
+
 ![](./SampleImage/disallowHalfDisplay.gif)
 
 You have to add parameter `allowHalfDisplay` to `setup(constraint:maxFollowPoint:minFollowPoint:allowHalfDesplay:)` function.
