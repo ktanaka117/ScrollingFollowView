@@ -25,15 +25,15 @@ open class ScrollingFollowView: UIView {
     
     fileprivate var delayBuffer: CGFloat = 0
     
-    open private(set) var enableBeFollowingState = true
+    open private(set) var allowHalfDisplay = false
     
-    open func setup(constraint cons: NSLayoutConstraint, maxFollowPoint: CGFloat, minFollowPoint: CGFloat, enableBeFollowingState: Bool = true) {
+    open func setup(constraint cons: NSLayoutConstraint, maxFollowPoint: CGFloat, minFollowPoint: CGFloat, allowHalfDisplay: Bool = false) {
         constraint = cons
         
         self.maxFollowPoint = -maxFollowPoint
         self.minFollowPoint = minFollowPoint
         
-        self.enableBeFollowingState = enableBeFollowingState
+        self.allowHalfDisplay = allowHalfDisplay
     }
     
     open func setupDelayPoints(pointOfStartingHiding hidingPoint: CGFloat, pointOfStartingShowing showingPoint: CGFloat) {
@@ -80,7 +80,7 @@ open class ScrollingFollowView: UIView {
     }
     
     open func didEndScrolling(_ willDecelerate: Bool = false) {
-        if !willDecelerate && enableBeFollowingState {
+        if !willDecelerate && !allowHalfDisplay {
             showOrHideIfNeeded()
         }
     }
