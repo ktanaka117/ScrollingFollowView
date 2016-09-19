@@ -8,36 +8,36 @@
 
 import UIKit
 
-public class ScrollingFollowView: UIView {
+open class ScrollingFollowView: UIView {
     
-    private var previousPoint: CGFloat = 0
+    fileprivate var previousPoint: CGFloat = 0
     
-    public private(set) weak var constraint: NSLayoutConstraint!
+    open private(set) weak var constraint: NSLayoutConstraint!
     
     // In default use, maxFollowPoint should be maxPoint of following to scroll DOWN.
-    private var maxFollowPoint: CGFloat!
+    fileprivate var maxFollowPoint: CGFloat!
     // In default use, minFollowPoint should be maxPoint of following to scroll UP.
-    private var minFollowPoint: CGFloat!
+    fileprivate var minFollowPoint: CGFloat!
     
     // These properties are enable to delay showing and hiding ScrollingFollowView.
     private var pointOfStartingHiding: CGFloat = 0
     private var pointOfStartingShowing: CGFloat = 0
     
-    private var delayBuffer: CGFloat = 0
+    fileprivate var delayBuffer: CGFloat = 0
     
-    public func setup(constraint cons: NSLayoutConstraint, maxFollowPoint: CGFloat, minFollowPoint: CGFloat) {
+    open func setup(constraint cons: NSLayoutConstraint, maxFollowPoint: CGFloat, minFollowPoint: CGFloat) {
         constraint = cons
         
         self.maxFollowPoint = -maxFollowPoint
         self.minFollowPoint = minFollowPoint
     }
     
-    public func setupDelayPoints(pointOfStartingHiding hidingPoint: CGFloat, pointOfStartingShowing showingPoint: CGFloat) {
+    open func setupDelayPoints(pointOfStartingHiding hidingPoint: CGFloat, pointOfStartingShowing showingPoint: CGFloat) {
         pointOfStartingHiding = -hidingPoint
         pointOfStartingShowing = showingPoint
     }
     
-    public func didScrolled(scrollView: UIScrollView) {
+    open func didScrolled(_ scrollView: UIScrollView) {
         let currentPoint = -scrollView.contentOffset.y
         
         let differencePoint = currentPoint - previousPoint
@@ -75,7 +75,7 @@ public class ScrollingFollowView: UIView {
         previousPoint = currentPoint
     }
     
-    private func isTopOrBottomEdge(scrollView: UIScrollView) -> Bool {
+    private func isTopOrBottomEdge(_ scrollView: UIScrollView) -> Bool {
         if scrollView.contentOffset.y >= scrollView.contentSize.height - scrollView.bounds.size.height || scrollView.contentOffset.y <= 0 {
             return true
         }
@@ -87,28 +87,28 @@ public class ScrollingFollowView: UIView {
 
 // MARK: - ManageProperties
 extension ScrollingFollowView {
-    public func resetPreviousPoint(scrollView: UIScrollView) {
+    public func resetPreviousPoint(_ scrollView: UIScrollView) {
         previousPoint = -scrollView.contentOffset.y
     }
     
-    public func resetDelayBuffer(scrollView: UIScrollView) {
+    public func resetDelayBuffer(_ scrollView: UIScrollView) {
         delayBuffer = -scrollView.contentOffset.y
     }
 }
 
 // MARK: - ShowAndHide
 extension ScrollingFollowView {
-    public func show(animated: Bool, duration: Double = 0.2, completionHandler: (()->())? = nil) {
+    public func show(_ animated: Bool, duration: Double = 0.2, completionHandler: (()->())? = nil) {
         superview?.layoutIfNeeded()
         
         if animated {
-            UIView.animateWithDuration(duration, animations: { [weak self] in
+            UIView.animate(withDuration: duration, animations: { [weak self] in
                 guard let `self` = self else { return }
                 self.constraint.constant = self.minFollowPoint
                 self.superview?.layoutIfNeeded()
-            }) { _ in
+            }, completion: { _ in
                 completionHandler?()
-            }
+            }) 
         } else {
             constraint.constant = minFollowPoint
             superview?.layoutIfNeeded()
@@ -116,17 +116,17 @@ extension ScrollingFollowView {
         }
     }
     
-    public func hide(animated: Bool, duration: Double = 0.2, completionHandler: (()->())? = nil) {
+    public func hide(_ animated: Bool, duration: Double = 0.2, completionHandler: (()->())? = nil) {
         superview?.layoutIfNeeded()
         
         if animated {
-            UIView.animateWithDuration(duration, animations: { [weak self] in
+            UIView.animate(withDuration: duration, animations: { [weak self] in
                 guard let `self` = self else { return }
                 self.constraint.constant = self.maxFollowPoint
                 self.superview?.layoutIfNeeded()
-            }) { _ in
+            }, completion: { _ in
                 completionHandler?()
-            }
+            }) 
         } else {
             constraint.constant = maxFollowPoint
             superview?.layoutIfNeeded()

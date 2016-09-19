@@ -18,38 +18,38 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
         let sfViewHeight = navBarScrollingFollowView.frame.size.height
-        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
+        let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
         
         navBarScrollingFollowView.setup(constraint: navBarTopConstraint, maxFollowPoint: sfViewHeight + statusBarHeight, minFollowPoint: 0)
         navBarScrollingFollowView.setupDelayPoints(pointOfStartingHiding: 100, pointOfStartingShowing: 0)
         
-        navBarScrollingFollowView.backgroundColor = UIColor.redColor()
+        navBarScrollingFollowView.backgroundColor = UIColor.red
     }
 
 }
 
 extension ViewController: UITableViewDataSource {
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 100
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCellWithIdentifier("Cell") else { fatalError("Empty Cell") }
-        cell.textLabel?.text = "\(indexPath.row)"
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") else { fatalError("Empty Cell") }
+        cell.textLabel?.text = "\((indexPath as NSIndexPath).row)"
         
         return cell
     }
 }
 
 extension ViewController: UITableViewDelegate {
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView.contentOffset.y > 200 {
             navBarScrollingFollowView.show(true) {
                 print("show")
@@ -65,7 +65,7 @@ extension ViewController: UITableViewDelegate {
 }
 
 extension ViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         navBarScrollingFollowView.didScrolled(scrollView)
     }
 }
