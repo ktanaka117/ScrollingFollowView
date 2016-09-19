@@ -1,3 +1,10 @@
+# 1.0.0 Release notes(2016/09/20)
+## Congraturation! Version 1.0.0 is Released!!!
+
+## New Feature
+- ** Migrating to Swift 3.0!! **
+- Enable to control allow/disallow half-display state.
+
 # 0.3.1 Release notes(2016/08/10)
 ## Improvement
 - delete unnecessary param in isTopOrBottomEdge. #1 @tototti
