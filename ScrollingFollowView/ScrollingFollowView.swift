@@ -37,7 +37,7 @@ open class ScrollingFollowView: UIView {
         pointOfStartingShowing = showingPoint
     }
     
-    open func didScrolled(_ scrollView: UIScrollView) {
+    open func didScroll(_ scrollView: UIScrollView) {
         let currentPoint = -scrollView.contentOffset.y
         
         let differencePoint = currentPoint - previousPoint

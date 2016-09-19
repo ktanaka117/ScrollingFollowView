@@ -66,6 +66,6 @@ extension ViewController: UITableViewDelegate {
 
 extension ViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        navBarScrollingFollowView.didScrolled(scrollView)
+        navBarScrollingFollowView.didScroll(scrollView)
     }
 }
