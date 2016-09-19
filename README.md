@@ -127,6 +127,46 @@ override func viewDidLoad() {
 }
 ```
 
+### Use Controlling Half-Display
+
+You can control half-display state like under gif:
+
+allowHalfDisplay
+![](./SampleImage/allowHalfDisplay.gif)
+
+disallowHalfDisplay(Auto Animation)
+![](./SampleImage/disallowHalfDisplay.gif)
+
+You have to add parameter `allowHalfDisplay` to `setup(constraint:maxFollowPoint:minFollowPoint:allowHalfDesplay:)` function.
+
+```swift
+override func viewDidLoad() {
+    super.viewDidLoad()
+
+    let scrollingFollowViewHeight = scrollingFollowView.frame.size.height
+    let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
+
+    // allowHalfDisplay: Default is false.
+    // When allowHalfDisplay is true, ScrollingFollowView can display following scrolling state.
+    // When allowHalfDisplay is false, ScrollingFollowView can't display following scrolling state. (If ScrollingFollowView is half-display state, it automatically animates.)
+    scrollingFollowView.setup(constraint: constraint, maxFollowPoint: scrollingFollowViewHeight + statusBarHeight, minFollowPoint: 0, allowHalfDisplay: true)
+}
+```
+
+and you also have to call `didEndScrolling()` and `didEndScrolling(_ decelerate:)` at `scrollViewDidEndDecelerating(_ scrollView:)` and `scrollViewDidEndDragging(_ scrollView:willDecelerate:)`.
+
+```swift
+extension ViewController: UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        navBarScrollingFollowView.didEndScrolling()
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        navBarScrollingFollowView.didEndScrolling(decelerate)
+    }
+}
+```
+
 ## Runtime Requirements
 
 - iOS8.0 or later
@@ -139,7 +179,6 @@ override func viewDidLoad() {
 - Enable to move ScrollingFollowView using frame layout.
 - Enable to horizontally move ScrollingFollowView.
 - Enable to manage constraint without passing constraint argument. (I think we only want to chose an edge which follows scrolling. Like .Top, .Bottom, .Left, .Right.)
-- Enable to prohibitting half-visible view using animation.
 
 ## Contact
 When you have some opinions or ideas about this library, send me a reply on Twitter.🍣
