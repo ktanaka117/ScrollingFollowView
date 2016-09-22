@@ -172,7 +172,7 @@ extension ViewController: UIScrollViewDelegate {
 ## Runtime Requirements
 
 - iOS8.0 or later
-- Xcode 7.0
+- Xcode 8.0
 
 ## Future Improvements
 - Refactoring.💪
