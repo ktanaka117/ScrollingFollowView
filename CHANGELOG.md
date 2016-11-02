@@ -1,3 +1,12 @@
+# 1.0.1 Release notes(2016/11/02)
+## Improvement
+- Make compilable on Xcode8.1 #5 @jollyjoester
+
+## Contributor
+@jollyjoester
+
+Thank you very much!
+
 # 1.0.0 Release notes(2016/09/20)
 ## Congraturation! Version 1.0.0 is Released!!!
 
