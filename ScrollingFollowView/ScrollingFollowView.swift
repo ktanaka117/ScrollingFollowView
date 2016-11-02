@@ -15,9 +15,9 @@ open class ScrollingFollowView: UIView {
     open private(set) weak var constraint: NSLayoutConstraint!
     
     // In default use, maxFollowPoint should be maxPoint of following to scroll DOWN.
-    fileprivate var maxFollowPoint: CGFloat!
+    fileprivate var maxFollowPoint: CGFloat = 0
     // In default use, minFollowPoint should be maxPoint of following to scroll UP.
-    fileprivate var minFollowPoint: CGFloat!
+    fileprivate var minFollowPoint: CGFloat = 0
     
     // These properties are enable to delay showing and hiding ScrollingFollowView.
     private var pointOfStartingHiding: CGFloat = 0
