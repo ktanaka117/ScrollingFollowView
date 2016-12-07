@@ -62,7 +62,7 @@ override func viewDidLoad() {
 ```swift
 func scrollViewDidScroll(scrollView: UIScrollView) {
 	// scrollingFollowView follows UIScrollView scrolling.
-    scrollingFollowView.didScrolled(scrollView)
+    scrollingFollowView.didScroll(scrollView)
 }
 ```
 
