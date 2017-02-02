@@ -37,6 +37,8 @@ ScrollingFollowView is available throught [Carthage](https://github.com/Carthage
 github "ktanaka117/ScrollingFollowView"
 ```
 
+Run `carthage update` to build the framework and drag the built `ScrollingFollowView.framework` into your Xcode project.
+
 Click below link if you would like to know more about using Carthage: https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos
 
 ## How to Use
