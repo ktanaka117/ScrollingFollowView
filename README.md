@@ -30,6 +30,13 @@ Then you can import it with:
 import ScrollingFollowView
 ```
 
+### Carthage
+ScrollingFollowView is available throught [Carthage](https://github.com/Carthage/Carthage). To install it simply add the following line to your Cartfile:
+
+```
+github "ktanaka117/ScrollingFollowView"
+```
+
 ## How to Use
 ### Layout InterfaceBuilder
 ScrollingFollowView only supports Autolayout use. 
