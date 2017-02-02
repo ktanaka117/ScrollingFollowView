@@ -37,6 +37,8 @@ ScrollingFollowView is available throught [Carthage](https://github.com/Carthage
 github "ktanaka117/ScrollingFollowView"
 ```
 
+Click below link if you would like to know more about using Carthage: https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos
+
 ## How to Use
 ### Layout InterfaceBuilder
 ScrollingFollowView only supports Autolayout use. 
