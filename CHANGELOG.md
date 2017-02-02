@@ -1,3 +1,12 @@
+# 1.1.1 Release notes(2017/02/02)
+## Improvement
+- Make usable on Carthage #3 @sgr-ksmt
+
+## Contributor
+@sgr-ksmt
+
+Thank you very much!
+
 # 1.0.1 Release notes(2016/11/02)
 ## Improvement
 - Make compilable on Xcode8.1 #5 @jollyjoester
