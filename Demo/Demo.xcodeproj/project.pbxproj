@@ -13,6 +13,7 @@
 		29F9EA3B1D42095400A9E9BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29F9EA3A1D42095400A9E9BC /* Assets.xcassets */; };
 		29F9EA3E1D42095400A9E9BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29F9EA3C1D42095400A9E9BC /* LaunchScreen.storyboard */; };
 		29F9EA6F1D42161500A9E9BC /* ScrollingFollowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F9EA6E1D42161400A9E9BC /* ScrollingFollowView.swift */; };
+		7E29FCE621994061004CF035 /* ScrollingFollowView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E29FCE521994061004CF035 /* ScrollingFollowView.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		29F9EA3D1D42095400A9E9BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		29F9EA3F1D42095400A9E9BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29F9EA6E1D42161400A9E9BC /* ScrollingFollowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScrollingFollowView.swift; path = ../../ScrollingFollowView/ScrollingFollowView.swift; sourceTree = "<group>"; };
+		7E29FCE521994061004CF035 /* ScrollingFollowView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ScrollingFollowView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E29FCE621994061004CF035 /* ScrollingFollowView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +45,7 @@
 			children = (
 				29F9EA321D42095400A9E9BC /* Demo */,
 				29F9EA311D42095400A9E9BC /* Products */,
+				7E29FCE421994061004CF035 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,6 +69,14 @@
 				29F9EA3F1D42095400A9E9BC /* Info.plist */,
 			);
 			path = Demo;
+			sourceTree = "<group>";
+		};
+		7E29FCE421994061004CF035 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7E29FCE521994061004CF035 /* ScrollingFollowView.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
